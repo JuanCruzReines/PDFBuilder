@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7E2D2E6B-E6FA-4CE6-98E1-83A65A547423}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PDFBuilder</RootNamespace>
+    <AssemblyName>PDFBuilder</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MigraDoc.DocumentObjectModel-gdi">
+      <HintPath>..\..\PDFsharp-MigraDocFoundation-1_50-beta5\MigraDoc\src\MigraDoc.DocumentObjectModel-gdi\bin\Debug\MigraDoc.DocumentObjectModel-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering-gdi">
+      <HintPath>..\..\PDFsharp-MigraDocFoundation-1_50-beta5\MigraDoc\src\MigraDoc.Rendering-gdi\bin\Debug\MigraDoc.Rendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp-gdi">
+      <HintPath>..\..\PDFsharp-MigraDocFoundation-1_50-beta5\MigraDoc\src\MigraDoc.Rendering-gdi\bin\Debug\PdfSharp-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\TableComponent\ImageCell.cs" />
+    <Compile Include="Components\TableComponent\TextCell.cs" />
+    <Compile Include="Components\TableComponent\Row.cs" />
+    <Compile Include="Components\TableComponent\Column.cs" />
+    <Compile Include="Components\Formats\Color.cs" />
+    <Compile Include="Components\Formats\Shading.cs" />
+    <Compile Include="Components\Formats\Border.cs" />
+    <Compile Include="Components\Header.cs" />
+    <Compile Include="Components\Interfaces\ICell.cs" />
+    <Compile Include="Components\Interfaces\IComponent.cs" />
+    <Compile Include="Components\Interfaces\ITableComponent.cs" />
+    <Compile Include="Components\Interfaces\IContent.cs" />
+    <Compile Include="Components\Interfaces\ITextContent.cs" />
+    <Compile Include="Components\Interfaces\IText.cs" />
+    <Compile Include="Components\Section.cs" />
+    <Compile Include="Components\Subtitle.cs" />
+    <Compile Include="Components\Image.cs" />
+    <Compile Include="Components\Paragraph.cs" />
+    <Compile Include="Components\Formats\TextTypes\BoldItalicText.cs" />
+    <Compile Include="Components\Formats\TextTypes\BoldText.cs" />
+    <Compile Include="Components\Formats\TextTypes\ItalicText.cs" />
+    <Compile Include="Components\Formats\TextTypes\NormalText.cs" />
+    <Compile Include="Components\Table.cs" />
+    <Compile Include="Components\Title.cs" />
+    <Compile Include="Document.cs" />
+    <Compile Include="Enums\Alignment.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderer.cs" />
+    <Compile Include="StyleManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
