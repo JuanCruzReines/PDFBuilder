@@ -17,6 +17,7 @@ namespace PDFBuilder
             setTextStyle(document);
             setTableTextStyle(document);
             setTableHeaderStyle(document);
+            setCommentsStyle(document);
         }
 
         /// <summary>
@@ -93,6 +94,21 @@ namespace PDFBuilder
 
             style.Font.Size = tableHeaderFontSize;
             style.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+            style.ParagraphFormat.Font.Color = Color.FromRgb(byte.MaxValue, byte.MaxValue, byte.MaxValue);
+
+        }
+
+        /// <summary>
+        /// Configure table header text styles for document
+        /// </summary>
+        private static void setCommentsStyle(MigraDoc.DocumentObjectModel.Document document)
+        {
+            Style style = document.Styles.AddStyle("Comments", "Normal");
+
+            style.Font.Name = commentsFont;
+
+            style.Font.Size = commentsFontSize;
+            style.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
 
         }
 
@@ -118,20 +134,24 @@ namespace PDFBuilder
 
         ///Text config 
         const string textFont = "Verdana";
-        const string textFontSize = "0.3cm";
+        const string textFontSize = "0.4cm";
         const byte textRed = 0;
         const byte textGreen = 0;
         const byte textBlue = 0;
-        const string textSpacing = "0.5cm";
+        const string textSpacing = "0.2cm";
 
         ///Table Text config 
         const string tableTextFont = "Verdana";
-        const string tableTextFontSize = "0.3cm";
+        const string tableTextFontSize = "0.4cm";
         const string tableTextSpacing = "0.15cm";
 
         ///Table Header config 
         const string tableHeaderFont = "Verdana";
-        const string tableHeaderFontSize = "0.35cm";
+        const string tableHeaderFontSize = "0.4cm";
+
+        ///Comments text config 
+        const string commentsFont = "Verdana";
+        const string commentsFontSize = "0.3cm";
 
         #endregion Internal fields
 
