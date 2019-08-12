@@ -31,15 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MigraDoc.DocumentObjectModel-gdi">
-      <HintPath>..\..\PDFsharp-MigraDocFoundation-1_50-beta5\MigraDoc\src\MigraDoc.DocumentObjectModel-gdi\bin\Debug\MigraDoc.DocumentObjectModel-gdi.dll</HintPath>
-    </Reference>
-    <Reference Include="MigraDoc.Rendering-gdi">
-      <HintPath>..\..\PDFsharp-MigraDocFoundation-1_50-beta5\MigraDoc\src\MigraDoc.Rendering-gdi\bin\Debug\MigraDoc.Rendering-gdi.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp-gdi">
-      <HintPath>..\..\PDFsharp-MigraDocFoundation-1_50-beta5\MigraDoc\src\MigraDoc.Rendering-gdi\bin\Debug\PdfSharp-gdi.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -83,6 +74,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\Users\eduardo_magnetto\Desktop\PDFsharp-MigraDocFoundation-1_50-beta5\MigraDoc\src\MigraDoc.DocumentObjectModel-gdi\MigraDoc.DocumentObjectModel-gdi.csproj">
+      <Project>{4666abf3-efe5-49bd-b2e8-9e04f5949145}</Project>
+      <Name>MigraDoc.DocumentObjectModel-gdi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\Users\eduardo_magnetto\Desktop\PDFsharp-MigraDocFoundation-1_50-beta5\MigraDoc\src\MigraDoc.Rendering-gdi\MigraDoc.Rendering-gdi.csproj">
+      <Project>{febbe5be-9f58-4967-bbcf-801f1cfcd774}</Project>
+      <Name>MigraDoc.Rendering-gdi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\Users\eduardo_magnetto\Desktop\PDFsharp-MigraDocFoundation-1_50-beta5\PDFsharp\src\PdfSharp-gdi\PdfSharp-gdi.csproj">
+      <Project>{5384ce57-1f94-4d22-860d-2e9c1ac12ddf}</Project>
+      <Name>PdfSharp-gdi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
