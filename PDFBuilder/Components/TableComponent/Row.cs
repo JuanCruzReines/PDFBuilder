@@ -45,7 +45,6 @@ namespace PDFBuilder.Components.TableComponents
             {
                 Cell cell = row.Cells[i];
                 cell.VerticalAlignment = VerticalAlignment.Center;
-                cell.Format.Alignment = cell.Column.Format.Alignment;
 
                 this.values[i].RenderInto(cell);
             }

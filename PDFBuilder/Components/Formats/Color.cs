@@ -7,19 +7,9 @@ namespace PDFBuilder.Components.Formats
         #region Internal fields
 
         /// <summary>
-        /// Red component
+        /// Color in hexadecimal
         /// </summary>
-        private byte r;
-
-        /// <summary>
-        /// Green component
-        /// </summary>
-        private byte g;
-
-        /// <summary>
-        /// Blue component
-        /// </summary>
-        private byte b;
+        private string Colorhex; 
 
         #endregion Internal fields
 
@@ -32,11 +22,9 @@ namespace PDFBuilder.Components.Formats
         /// <summary>
         /// Ctor.
         /// </summary>
-        public Color(byte r, byte g, byte b)
+        public Color(string color)
         {
-            this.r = r;
-            this.g = g;
-            this.b = b;
+            this.Colorhex = color;
         }
 
         /// <summary>
@@ -44,7 +32,7 @@ namespace PDFBuilder.Components.Formats
         /// </summary>
         public MigraDoc.DocumentObjectModel.Color GetColor()
         {
-            return new MigraDoc.DocumentObjectModel.Color(r, g, b);
+            return MigraDoc.DocumentObjectModel.Color.Parse(this.Colorhex);
         }
 
         #endregion Public Methods

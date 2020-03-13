@@ -23,6 +23,11 @@ namespace PDFBuilder
         /// </summary>
         private List<Section> sections;
 
+        /// <summary>
+        /// Document left margin
+        /// </summary>
+        private float leftMargin;
+
         #endregion
 
         #region Properties
@@ -34,9 +39,10 @@ namespace PDFBuilder
         /// <summary>
         /// Ctor.
         /// </summary>
-        public Document(string name)
+        public Document(string name, float leftMargin)
         {
             this.name = name;
+            this.leftMargin = leftMargin;
             this.renderer = new Renderer();
             this.sections = new List<Section>();
         }
@@ -47,6 +53,8 @@ namespace PDFBuilder
         public void Save()
         {
             MigraDoc.DocumentObjectModel.Document document = new MigraDoc.DocumentObjectModel.Document();
+
+            document.DefaultPageSetup.LeftMargin = MigraDoc.DocumentObjectModel.Unit.FromMillimeter(leftMargin);
 
             StyleManager.SetDocumentStyles(document);
 

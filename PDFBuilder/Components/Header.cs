@@ -22,6 +22,7 @@ namespace PDFBuilder.Components
         public void RenderInto(MigraDoc.DocumentObjectModel.Section section)
         {
             HeaderFooter header = section.Headers.Primary;
+            header.Format.SpaceBefore = Unit.FromMillimeter(50);
 
             this.childs.ForEach(child => child.RenderInto(header));
         }

@@ -74,7 +74,9 @@ namespace PDFBuilder.Components
         /// </summary>
         public void RenderInto(Cell cell)
         {
-            cell.Add(this.CreateImage());
+            MigraDoc.DocumentObjectModel.Paragraph paragraph = cell.AddParagraph();
+            paragraph.Add(this.CreateImage());
+            paragraph.Format.Alignment = GetAlignment();
         }
 
         #endregion Public Methods
@@ -108,6 +110,21 @@ namespace PDFBuilder.Components
                 case Alignment.Center: return ShapePosition.Center;
                 case Alignment.Right: return ShapePosition.Right;
                 default: return ShapePosition.Left;
+            }
+        }
+
+        /// <summary>
+        /// Gets the MigraDoc alignment based on our alignment
+        /// </summary>
+        private ParagraphAlignment GetAlignment()
+        {
+            switch (this.alignment)
+            {
+                case Alignment.Left: return ParagraphAlignment.Left;
+                case Alignment.Center: return ParagraphAlignment.Center;
+                case Alignment.Right: return ParagraphAlignment.Right;
+                case Alignment.Justify: return ParagraphAlignment.Justify;
+                default: return ParagraphAlignment.Left;
             }
         }
 
