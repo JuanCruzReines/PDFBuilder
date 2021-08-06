@@ -32,7 +32,12 @@ namespace PDFBuilder.Components
         /// <summary>
         /// Chart values
         /// </summary>
-        public List<double> Values { get; set; }
+        public List<List<double>> Values { get; set; }
+
+        /// <summary>
+        /// Chart values
+        /// </summary>
+        public List<Formats.Color> LineColors { get; set; }
 
         #endregion Properties
 
@@ -49,12 +54,15 @@ namespace PDFBuilder.Components
         /// <summary>
         /// Ctor.
         /// </summary>
-        public Chart(List<double> chartValues, float chartHeight, float chartWidth, ChartType type)
+        public Chart(List<List<double>> chartValues, float chartHeight, float chartWidth, ChartType type, List<string> lineColors)
         {
             this.ChartHeight = chartHeight;
             this.ChartWidth = chartWidth;
             this.Values = chartValues;
             this.ChartType = type;
+
+            this.LineColors = new List<Formats.Color>();
+            lineColors.ForEach(color => LineColors.Add(new Formats.Color(color)));
         }
 
         /// <summary>
@@ -91,9 +99,16 @@ namespace PDFBuilder.Components
 
             chart.Width = Unit.FromMillimeter(this.ChartHeight);
             chart.Height = Unit.FromMillimeter(this.ChartHeight);
+            Series series;
 
-            Series series = chart.SeriesCollection.AddSeries();
-            series.Add(this.Values.ToArray());
+            for(int i = 0; i < Values.Count; i++)
+            {
+                series = chart.SeriesCollection.AddSeries();
+                series.Add(Values[i].ToArray());
+                series.MarkerStyle = MarkerStyle.None;
+                series.LineFormat.Color = LineColors[i].GetColor();
+            };
+            
 
             if (ChartType == ChartType.Pie2D)
             {
@@ -105,6 +120,14 @@ namespace PDFBuilder.Components
                 chart.XAxis.MajorTickMark = TickMarkType.Outside;
                 chart.YAxis.MajorTickMark = TickMarkType.Outside;
                 chart.YAxis.HasMajorGridlines = true;
+            }
+
+            if(ChartType == ChartType.Line)
+            {
+                //xAxis values
+                XSeries xseries = chart.XValues.AddXSeries();
+
+                this.Values.ForEach( _ => xseries.Add(string.Empty));
             }
             
             return chart;
